@@ -19,7 +19,9 @@ export const DarkmodeProvider = ({ children }: DarkmodeProviderProps) => {
 
   function getDarkmode(): boolean {
     if (localStorage.getItem("darkmode") === "false") return false;
-    return true;
+    if (localStorage.getItem("darkmode") === "true") return true;
+    
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
   function applyDarkmode(darkmode: boolean) {

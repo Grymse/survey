@@ -33,7 +33,7 @@ export function Elements({elements, indent, indexOffset = 1}: ElementsProps) {
     const hasAnswer = 0 < (answers.get(element.id)?.length ?? 0);
     const error = errors.get(element.id);
 
-    return <div className={`duration-200 space-y-2 relative -mx-6 px-6 ${hasAnswer ? "text-primary" : ""} ${error ? "bg-red-200" : ""}`}>
+    return <div className={`duration-200 space-y-2 relative -mx-6 px-6 ${hasAnswer ? "text-primary" : ""} ${error ? "bg-red-200 dark:bg-red-950" : ""}`}>
 
         <Label>{index}: {element.title}</Label> {element.required && <span className="text-red-500">*</span>}
       
