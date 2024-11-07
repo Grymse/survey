@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import {DropDownInputType, Element as ElementType, RadioInputType, RangeInputType, SelectInputType, TextFieldInputType, TextInputType} from "./surveySetup"
 import { Button } from "../ui/button"
 import { useSurvey } from "./useSurvey"
-import React from "react"
 import MD from "./Markdown"
 
 type ElementsProps = {
