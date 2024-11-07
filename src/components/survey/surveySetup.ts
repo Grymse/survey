@@ -75,12 +75,6 @@ markdown?: string;
 } & Meta;
 
 
-type StrategyType = {
-  title: string;
-  strategy: string;
-  example: string;
-}
-
 function createStrategyCompound(index: number, strategy: StrategyType) : Element {
   const id = 20 + index * 2;
   return {
@@ -110,107 +104,125 @@ function createStrategyCompound(index: number, strategy: StrategyType) : Element
   };
 }
 
-
-const strategies: StrategyType[] = [
-    {
-      "title": "Need Check",
-      "strategy": "Ask yourself 'Do I really need this'?",
-      "example": "You are ready to checkout and pay for the product, and in this moment you stop up and detach yourself from the feeling of excitement over completing the purchase. Here you question yourself 'Do I really need this?'"
-    },
-    {
-      "title": "Wait Period",
-      "strategy": "Enforce a wait-period before completing a purchase.",
-      "example": "In the midst of buying the product, you either put the shopping cart aside or add the products to a wishlist and wait a predetermined amount of time (e.g. 48 hours). This will dim the feeling of urgency and excitement and give you sufficient time to rationally contemplate the purchase."
-    },
-    {
-      "title": "Visualize Alternatives",
-      "strategy": "Visualize alternatives to spending money on a product.",
-      "example": "As you are scrolling through different products, or when you enter checkout, be aware of how buying this particular product at this moment influences your long-term goals. Visualize alternatives you could put your money into, such as saving for your dream house, investing, or donating to charity."
-    },
-    {
-      "title": "Time Reflection",
-      "strategy": "Reflect on time spent on online shopping.",
-      "example": "When exiting a session of looking at/purchasing on online webshops and apps, you reflect on how much of your time it consumes."
-    },
-    {
-      "title": "Review Research",
-      "strategy": "Assess third-party reviews of the item(s).",
-      "example": "Before completing a purchase, you look up reviews on Amazon to improve your judgment of the product."
-    },
-    {
-      "title": "Second-Hand Search",
-      "strategy": "Find second-hand deals similar to what you are about to purchase.",
-      "example": "Before checking out, you search through Facebook Marketplace, Craigslist, Ebay, or your local second-hand dealership to see if an item similar or identical to this is available."
-    },
-    {
-      "title": "Delete Payment Info",
-      "strategy": "Delete saved payment information to prolong the purchasing process.",
-      "example": "To increase the duration of the checkout process, you delete your saved payment information from the browser or webshop. This requires you to get out your credit card and enter the information, giving you more time to reflect."
-    },
-    {
-      "title": "Use Adblocker",
-      "strategy": "Use adblocker to remove advertising temptation.",
-      "example": "Install an adblocker to decrease the amount of ads and marketing you see, improving your ability to refrain from impulsive online purchases."
-    },
-    {
-      "title": "Quality Check",
-      "strategy": "Ask yourself if this is a quality product with a long lifespan/repairability.",
-      "example": "Before purchasing, estimate the quality and lifespan of the product and whether you can repair it if it breaks. Contemplate if you would still be interested in buying it."
-    },
-    {
-      "title": "Usage Time",
-      "strategy": "Ask yourself how much time you will use this product.",
-      "example": "Before buying, consider how much time you will actually use the product to get a sense of the price per use."
-    },
-    {
-      "title": "Block Apps",
-      "strategy": "Block webshop or shop app or disable checkout.",
-      "example": "Block specific webshops or apps (e.g., clothing stores like Zara or H&M) to prevent impulsive purchases."
-    },
-    {
-      "title": "Time-Window Limit",
-      "strategy": "Only allow buying within a specific time window.",
-      "example": "Set a rule that allows purchases only on certain days or times (e.g., only on the 1st and 15th of the month)."
-    },
-    {
-      "title": "Max Purchases",
-      "strategy": "Set a maximum number of purchases over time.",
-      "example": "Set a limit on how many items you can buy from a specific category (hobbies, clothes, etc.) per week, month, or year."
-    },
-    {
-      "title": "Budget Limit",
-      "strategy": "Create a budget and limit spending on specific types of purchases.",
-      "example": "Before shopping, set a budget and limit how much you’re willing to spend on specific categories (e.g., electronics, clothes) per time period."
-    },
-    {
-      "title": "Borrow/Rent",
-      "strategy": "Find lending or renting alternatives.",
-      "example": "Instead of purchasing an item for short-term use, check if you can borrow it from friends or rent it."
-    },
-    {
-      "title": "Work-Time Visual",
-      "strategy": "Visualize work hours needed to afford the product.",
-      "example": "Translate the price into hours of work based on your salary to understand how long you need to work to pay for the item."
-    },
-    {
-      "title": "Alternative Activities",
-      "strategy": "Stop shopping and find other activities.",
-      "example": "After browsing a webshop, remind yourself that the feelings from shopping can be achieved through hobbies, learning, or other activities. Exit the webshop and do something else."
-    },
-    {
-      "title": "Similar Items",
-      "strategy": "Be aware of purchasing items similar to ones you already own.",
-      "example": "Reflect on whether you already own something similar and if you are willing to replace the old one or need the new item."
-    },
-    {
-      "title": "Eco Reflection",
-      "strategy": "Reflect on time, space, and environmental costs.",
-      "example": "Before purchasing, think about how much of your time it will take, the space it requires, and the environmental cost (CO2 and waste)."
-    }
-]
-
 //const compound: Element = createStrategyCompound(0, "Ask yourself if this is a quality product with long lifespan/repairability", "Before purchasing the product, you estimate the quality of the product, the lifespan of the product and to which degree you can repair the product in case it breaks. You may also ask yourself whether you would like to use this product excessively, if you had the chance. With this new information, you contemplate whether you still interested in buying this particular product.")
 
+type StrategyType = {
+  strategy: string;
+  example: string;
+  short: string;
+}
+
+const strategies: StrategyType[] = [{
+  short: "Need This?",
+  strategy: "Before completing a purchase, ask yourself \"Do I really need this\"?",
+example: "You are ready to checkout and pay for the product, and in this moment you stop up and detach yourself from the feeling of excitement over completing the purchase - Here you question yourself \"Do I really need this?\""
+},
+{
+  short: "Enforce Wait Time",
+  strategy: "After committing to purchasing a product, enforce a wait-period before completing",
+example: "In the midst of buying the product, you either put the shopping cart aside or add the products to a wishlist and wait a predetermined amount of time (e.g. 48 hours). This will dim the feeling of urgency and excitement and give you sufficient time to rationally contemplate the purchase."
+},
+{
+  short: "Visualize Alternatives",
+  strategy: "Visualise alternatives to spending money on a particular product (Dream house, investing, donation)",
+example: "As you are scrolling through different products, or when you enter checkout, be aware of how buying this particular product at this moment influences your long-term goals. Visualise alternatives you could put your money - Saving up for your dream house, investing the money or donating the money to charity."
+},
+{
+  short: "Reflect Shopping Time",
+  strategy: "Reflect on time spent on onlineshopping",
+example: "When exiting a session of looking at/purchasing on online webshops and apps, you reflect on how much of your time it consumes."
+},
+{
+  short: "Look At Reviews",
+  strategy: "Understand what you are purchasing by assessing third-party reviews of the item(s)",
+example: "Before completing a purchase you look up reviews on Amazon to improve your judgement of the product."
+},
+{
+  short: "Find Second-Hand",
+  strategy: "Find second-hand deals similar to the one you are about to purchase",
+example: "Before checking out, you search through Facebook Marketplace, Craigslist, Ebay (or your local second-hand dealership) to see if an item similar or identical to this is available."
+},
+{
+  short: "Delete Payment Info",
+  strategy: "Delete all saved payment information and shipping addresses, to prolong the purchasing process",
+example: "To increase the duration of the checkout process, you have deleted your payment information saved in your browser, and on the webshop. This requires you to get out your credit card and enter the information, which prolongs the purchasing process and gives you more time to reflect on the product(s) you are purchasing."
+},
+{
+  short: "Use Adblocker",
+  strategy: "Use adblocker to remove temptation from advertising",
+example: "Adblockers is a popular type of internet browser extension that removes ads from websites to improve your browsing experience. In this context, you have installed it to decrease the amount of ads, and thus the amount of tempting marketing, hoping that it will improve your ability to refrain from purchasing impulsively online."
+},
+{
+  short: "Quality Product?",
+  strategy: "Ask yourself if this is a quality product with long lifespan/repairability",
+example: "Before purchasing the product, you estimate the quality of the product, the lifespan of the product and to which degree you can repair the product in case it breaks. You may also ask yourself whether you would like to use this product excessively, if you had the chance. With this new information, you contemplate whether you still interested in buying this particular product."
+},
+{
+  short: "How Much Use?",
+  strategy: "Ask yourself how much time you will use this product",
+example: "Before buying the product, you ask yourself how much time you'll actually use it, to get a grasp of the price per use."
+},
+{
+  short: "Block Apps/Sites",
+  strategy: "Block webshop/shop-app or disable checkout",
+example: "You have chosen to block a specific clothing stores (Zara / H&M etc.) webshop/app as you often impulsively purchase clothes from this store. The blocking mechanism may refer to blocking access, or merely disabling the ability to checkout."
+},
+{
+  short: "Time-Window Buying",
+  strategy: "Only allow buying within time-window",
+example: `Limit yourself to one of the following buying patterns:
+- Over 30 days, you only allowed yourself to buy products on the 1st and 15th
+- Over 7 days, you only allowed yourself to buy products on Thursdays
+- During the day, you only allowed yourself to complete purchases between 9am and 10am.`
+},
+{
+  short: "Set Purchase Limit",
+  strategy: "Set maximum purchases over time",
+example: "You set a limit on how many items you can buy from a specific category (Hobbies, clothes, jewellery, electronics etc.) per week/month/year. The number could be set to zero, to withdraw you from purchasing for a given time period."
+},
+{
+  short: "Create Budget",
+  strategy: "Create a budget, and limit spending on specific types of purchases",
+example: "Before shopping, you put down a budget and limit how much money you are willing to spend in specific categories (hobbies, clothes, jewellery, electronics etc.) per week/month/year."
+},
+{
+  short: "Borrow or Rent",
+  strategy: "Find lending/renting alternatives",
+example: "Instead of purchasing an item, which you may only use for a short amount of time, you choose to look for lending options available from friends or libraries. If lending is not an option, you also look for rental options."
+},
+{
+  short: "Work-Time Cost",
+  strategy: "Visualise hours of work-time instead of price",
+example: "You see the price-tag of a $45 t-shirt, and then use your salary at around $15/hr ($9/hr after taxes) to immediately calculate the price into 5 hours of work. You are now aware of how long you need to work in order to buy this shirt."
+},
+{
+  short: "Do Alternative Activity",
+  strategy: "Stop yourself in midst of shopping to find alternative activities (e.g. hobby, learn, entertainment)",
+example: "After browsing a webshop/app for some time, you remind yourself that the type of feeling that shopping gives you, is achievable through cheaper means, like enjoying hobbies, learning, entertainment, games etc. You exit the webshop to play a video game instead."
+},
+{
+  short: "Avoid Identical Products",
+  strategy: "Being aware of purchasing items similar to existing ones",
+example: "When purchasing an item, you reflect on whether you already own an item similar or identical to it. If so, you ask yourself, whether you are willing to replace the old one with this one, or if the original item is broken and how you intend to take better care of this one."
+},
+{
+  short: "Eco Impact Check",
+  strategy: "Reflect on time, space and environmental cost (CO2 & waste generated) of the product",
+example: `Before completing a purchase, you reflect on the following questions:
+- How much of your time it will consume to use and take care of.
+- How much space it takes up.
+- The environmental cost (CO2 & waste generated) of buying this product.`
+},
+{
+  short: "Corporate Reflection",
+  strategy: "Remind yourself of the corporations agenda and it's potential use of psychological marketing",
+example: "Before completing a purchase, you zoom out of the experience to reflect on the capitalistic agenda of the corporation trying to convince you to buy their product(s). They may be willing to use psychological marketing tricks or exaggerate the product's quality/effectivity in pursuit of their goals."
+},
+{
+  short: "Emotionally Self-aware",
+  strategy: "When purchasing, ask yourself which feelings you are experiencing, that leads you to want to buy",
+example: "You are in the midst of ordering clothes, but before checkout you ask yourself what feelings you are experiencing - You continue to ask whether you genuinely need this specific piece of clothes, or if you're coping with boredom/sadness by shopping. You now try to embrace this feeling, to understand why you are feeling this way"}
+]
 
 function shuffleArray<T>(array: T[]): T[] {
   for (let i = array.length - 1; i > 0; i--) {
