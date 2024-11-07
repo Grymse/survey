@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import {DropDownInputType, Element as ElementType, RadioInputType, RangeInputType, SelectInputType, TextFieldInputType, TextInputType} from "./surveySetup"
 import { Button } from "../ui/button"
 import { useSurvey } from "./useSurvey"
+import React from "react"
+import MD from "./Markdown"
 
 type ElementsProps = {
     elements: ElementType[];
@@ -16,7 +18,7 @@ type ElementsProps = {
   }
   
 export function Elements({elements, indent, indexOffset = 1}: ElementsProps) {
-    return <div className={`space-y-12 ${indent && "pl-4 border-l border-l-primary dark:border-l-gray-500 my-6"}`}>
+    return <div className={`space-y-12 ${indent && "pl-4 border-l border-l-primary"}`}>
       {elements.map((e, i) => <Element key={String(i)} element={e} index={i + indexOffset} />)}
     </div>
   }
@@ -25,10 +27,10 @@ export function Elements({elements, indent, indexOffset = 1}: ElementsProps) {
     const {errors, answers} = useSurvey();
     if(element.type === "Text") return <div className="space-y-2">
         <p className="text-lg">{element.title}</p> 
-        {element.subtitle && <p className="leading-7 text-muted-foreground">{element.subtitle}</p>}
+        {element.subtitle && <MD className="text-muted-foreground font-light">{element.subtitle}</MD>}
     </div>
 
-    if(element.type === "Compound") return element.elements && <Elements elements={element.elements} indent indexOffset={index*2} />;
+    if(element.type === "Compound") return element.elements && <div className="pt-4"><Elements elements={element.elements} indent indexOffset={index*2} /></div>;
 
     const hasAnswer = 0 < (answers.get(element.id)?.length ?? 0);
     const error = errors.get(element.id);

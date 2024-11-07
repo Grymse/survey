@@ -88,7 +88,7 @@ function PageContainer({
   return <Card className="w-full my-4 max-w-2xl mx-auto">
   <CardHeader>
     <CardTitle className="text-2xl">{title}</CardTitle>
-    {subtitle && <p>{subtitle}</p>}
+    {subtitle && <p className="leading-7 font-light">{subtitle}</p>}
   </CardHeader>
   <CardContent>
     {children}

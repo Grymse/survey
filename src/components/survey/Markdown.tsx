@@ -4,11 +4,13 @@ import remarkGfm from 'remark-gfm';
 
 type Props = {
     children: string;
+    className?: string;
 }
 
-export default function MD({ children }: Props) {
+export default function MD({ children, className }: Props) {
     return (
       <Markdown
+        className={className}
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">{children}</h1>,
