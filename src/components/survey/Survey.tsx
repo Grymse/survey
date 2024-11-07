@@ -85,7 +85,7 @@ type PageContainerProps = PropsWithChildren<{
 function PageContainer({
   title, subtitle, children, next, prev, nextTitle, prevTitle, maxPage, page
 }: PageContainerProps) {
-  return <Card className="w-full sm:mt-4 max-w-2xl mx-auto mb-24">
+  return <Card className="w-full my-4 max-w-2xl mx-auto">
   <CardHeader>
     <CardTitle className="text-2xl">{title}</CardTitle>
     {subtitle && <p>{subtitle}</p>}

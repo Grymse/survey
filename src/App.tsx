@@ -9,7 +9,7 @@ function App() {
       <div className="absolute bottom-4 right-4">
         <DarkmodeButton />
       </div>
-      <main className="w-screen h-screen overflow-y-scroll">
+      <main className="w-[100dvw] h-[100dvh] overflow-y-scroll">
         <Survey />
       </main>
     </Providers>

@@ -81,32 +81,33 @@ type StrategyType = {
   example: string;
 }
 
-function createStrategyCompound(id: number, strategy: StrategyType) : Element {
-    return {
-        type: "Compound",
-        elements: [
-          {
-            title: strategy.strategy,
-            subtitle: strategy.example,
-            type: "Text",
-          },
-          {
-            id: id,
-            title: "Have you tried this strategy before?",
-            type: "RadioInput",
-            options: ["Yes", "No", "Maybe"],
-            required: true,
-          },
-          {
-            id: id+1,
-            title: "How effective do you perceive this strategy to be?",
-            subtitle: "Rate on scale from 1 (Not effective) to 5 (Very effective).",
-            options: ["1", "2", "3", "4", "5"],
-            type: "RangeInput",
-          },
-        ],
-        shuffle: false,
-      };
+function createStrategyCompound(index: number, strategy: StrategyType) : Element {
+  const id = 20 + index * 2;
+  return {
+    type: "Compound",
+    elements: [
+      {
+        title: strategy.strategy,
+        subtitle: strategy.example,
+        type: "Text",
+      },
+      {
+        id: id,
+        title: "Have you tried this strategy before?",
+        type: "RadioInput",
+        options: ["Yes", "No", "Maybe"],
+        required: true,
+      },
+      {
+        id: id+1,
+        title: "How effective do you perceive this strategy to be?",
+        subtitle: "Rate on scale from 1 (Not effective) to 5 (Very effective).",
+        options: ["1", "2", "3", "4", "5"],
+        type: "RangeInput",
+      },
+    ],
+    shuffle: false,
+  };
 }
 
 
@@ -222,7 +223,12 @@ function shuffleArray<T>(array: T[]): T[] {
 const strategiesPage: Page = {
   title: "About you",
   subtitle: "To help us understand more about your shopping habits, we’d like to start with a few brief questions about you. This will include general demographic information, allowing us to analyze trends and patterns in online shopping behaviors across different groups. Your responses are anonymous and will be used solely to improve our research on impulse purchasing habits.",
-  elements: shuffleArray(strategies.map((strategy, i) => createStrategyCompound(20 + i * 2, strategy)))
+  elements: shuffleArray(strategies.map((strategy, i) => createStrategyCompound(i, strategy))).map((e,i) => {
+
+    //@ts-expect-error Inject Strategy number
+    e.elements[0].title = "Strategy " + (i+1) + ": " + e.elements[0].title;
+    return e;
+  })
 }
 
 const aboutYou: Page = {
