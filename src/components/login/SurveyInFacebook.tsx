@@ -14,7 +14,7 @@ const markdown = `
 
 export default function SurveyInFacebook() {
   const userAgent = navigator.userAgent || navigator.vendor
-  const isFacebook = /FBAN|FBAV|Instagram/.test(userAgent);
+  const isFacebook = /FBAN|FBAV|Instagram/.test(userAgent) || true;
 
   function copyURL() {
     navigator.clipboard.writeText('https://impulse-survey.vercel.app/');
