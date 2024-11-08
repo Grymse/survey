@@ -26,8 +26,8 @@ export default function MD({ children, className }: Props) {
           thead: ({ children }) => <TableHeader>{children}</TableHeader>,
           tr: ({ children }) => <TableRow>{children}</TableRow>,
           td: ({ children }) => <TableCell>{children}</TableCell>, */
-          ul: ({ children }) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>,
-          ol: ({ children }) => <ol className="my-6 ml-6 list-decimal [&>li]:mt-2">{children}</ol>,
+          ul: ({ children }) => <ul className="my-2 ml-6 list-disc [&>li]:mt-2">{children}</ul>,
+          ol: ({ children }) => <ol className="my-2 ml-6 list-decimal [&>li]:mt-2">{children}</ol>,
           li: ({ children }) => <li>{children}</li>,
           a: ({ children, href }) => 
         <a href={href} className="leading-7 [&:not(:first-child)]:mt-6 font-medium text-primary underline underline-offset-4">{children}</a>,
@@ -35,8 +35,8 @@ export default function MD({ children, className }: Props) {
           hr: () => <hr className="my-4 border-muted" />,
           
           code: (x) => (
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
-        <code>{x.children}</code></pre>
+            <pre className="bg-muted overflow-hidden p-4 w-full max-w-full rounded-lg">
+            <p className='max-w-full w-24'>{x.children}</p></pre>
           ),
           pre: ({ children }) => (
             <pre className="[&>code]:w-full [&>code]:px-4 [&>code]:py-2">

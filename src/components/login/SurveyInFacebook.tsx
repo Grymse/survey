@@ -9,7 +9,7 @@ const markdown = `
 2. Go to your browser (Chrome / Safari)
 3. Paste the URL and continue!
 
-\`https://impulse-survey.vercel.app/\`
+\`impulse-survey.vercel.app\`
 `;
 
 export default function SurveyInFacebook() {
@@ -24,9 +24,10 @@ export default function SurveyInFacebook() {
     })
   }
 
-  return (
+  return <>
     <Dialog open={isFacebook}>
     <DialogContent className="sm:max-w-[425px]" showCloseButton={false}>
+
       <DialogHeader>
         <DialogTitle>Go to your internet browser (Safari/Chrome)</DialogTitle>
         <DialogDescription className="text-muted-foreground">Facebook does not allow us to login, when using their app. Please go to your internet browser and login there.
@@ -40,5 +41,6 @@ export default function SurveyInFacebook() {
     </DialogFooter>      
     </DialogContent>
   </Dialog>
-  )
+
+  </>
 }
