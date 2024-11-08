@@ -16,7 +16,7 @@ export default function LoginModal() {
         </p>
       <DialogFooter className="flex gap-4 justify-between w-full">
         <Button onClick={db.signinWithGoogle}>Login with Google </Button>
-        <Button onClick={db.signinWithFacebook}>Login with Facebook</Button>
+        {/* <Button onClick={db.signinWithFacebook}>Login with Facebook</Button> */}
     </DialogFooter>      
     </DialogContent>
   </Dialog>
