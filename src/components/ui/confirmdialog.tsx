@@ -53,7 +53,7 @@ export default function ConfirmDialog({
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{message}</DialogDescription>
         </DialogHeader>
-        <DialogFooter className="flex justify-between">
+        <DialogFooter className="flex gap-4 justify-between">
           <DialogClose asChild>
             <Button type="button" variant="secondary">
               Cancel

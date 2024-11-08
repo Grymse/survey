@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog';
 import useAuth from '@/hooks/useAuth';
 import { Button } from '../ui/button';
-import { signinWithGoogle } from '@/lib/firebase';
+import db from '@/lib/firebase';
 
 export default function LoginModal() {
     const user = useAuth();
@@ -15,7 +15,7 @@ export default function LoginModal() {
             You need to login to fill out this formular. This is to prevent spam. Your identity will be kept anonymous.
         </p>
       <DialogFooter>
-        <Button onClick={signinWithGoogle}>Login with Google</Button>
+        <Button onClick={db.signinWithGoogle}>Login with Google</Button>
     </DialogFooter>      
     </DialogContent>
   </Dialog>

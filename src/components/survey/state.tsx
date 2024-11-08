@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useRef, useState } from 'react';
 import { Element } from './surveySetup';
 import { toast } from '@/hooks/useToast';
-import { db } from '@/services/FirebaseDB';
+import db from '@/lib/firebase';
 import useAuth from '@/hooks/useAuth';
 import { User } from 'firebase/auth';
 import throttle from 'lodash.throttle';

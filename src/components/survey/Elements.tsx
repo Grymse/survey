@@ -72,15 +72,15 @@ function RadioInput(element: RadioInputType) {
 
 function SelectInput(element: SelectInputType) {
   const {answers, answer} = useSurvey()
-  const currentAnswer = answers.get(element.id)?.split('|')
+  const currentAnswer = answers.get(element.id)?.split('|')?.filter(s => s.length > 0);
 
   function onInputChange(option: string, checked: boolean | string) {
       checked = checked === true || checked === "true";
 
       if(!checked) {
           if (!currentAnswer) return;
-          
-          answer(element.id, currentAnswer.filter(o => option !== o).join('|'));
+          const filtered = currentAnswer.filter(o => option !== o);
+          answer(element.id, filtered.length === 0 ? null : filtered.join('|'));
           return;
       }
 
@@ -95,7 +95,7 @@ function SelectInput(element: SelectInputType) {
           <Checkbox
             name={option}
             id={option} 
-            checked={currentAnswer?.includes(option)}
+            checked={currentAnswer?.includes(option) ?? false}
             onCheckedChange={e => onInputChange(option, e)}
           />
           <Label htmlFor={option}>{option}</Label>

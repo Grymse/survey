@@ -445,6 +445,8 @@ Thank you for dedicating time to complete this survey! It helps us a lot!
   pages: [aboutYou, impulsePurchases, strategiesPage],
 }
 
+export const questions = survey.pages.flatMap(p => p.elements).flatMap(e => e.type === "Compound" ? e.elements : e).filter(e => e?.type && e.type.endsWith("Input"));
+
 
 
 
