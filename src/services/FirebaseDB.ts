@@ -35,11 +35,11 @@ class FirebaseDB {
       throw new Error("Responses not found");
     }
 
-    const map = new Map(docSnapshot.data()?.responses);
+    const responses = docSnapshot.data()?.responses;
+    const map = new Map(Object.entries(responses).map(([key, value]) => [parseInt(key), value]));
 
     // Run through all entries in the map. In case the key is not a number, delete it.
     for (const [key, value] of map.entries()) {
-      console.log(key, value);
       if (typeof key !== "number" || typeof value !== "string") {
         map.delete(key);
       }

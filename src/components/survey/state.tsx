@@ -1,9 +1,10 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useEffect, useRef, useState } from 'react';
 import { Element } from './surveySetup';
 import { toast } from '@/hooks/useToast';
 import { db } from '@/services/FirebaseDB';
 import useAuth from '@/hooks/useAuth';
 import { User } from 'firebase/auth';
+import throttle from 'lodash.throttle';
 
 type ID = number;
 
@@ -32,14 +33,25 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     const [answers, setAnswers] = useState<Map<ID, string>>(new Map());
     const [errors, setErrors] = useState<Map<ID, string>>(new Map());
 
+    const throttledSave = useRef(throttle(() => setAnswers((answers) => {
+        db.save(answers);
+        return answers;
+    }), 10000)).current;
+
     useEffect(() => {
         if(auth?.uid === currentUser?.uid) return;
 
         setCurrentUser(auth);
         db.load().then((data) => {
-            console.log("Data loaded", data);
+            setAnswers(data);
         }).catch(() => {});
     },[auth, currentUser]);
+
+    useEffect(() => {
+        if(answers.size === 0) return;
+
+        throttledSave();
+    }, [answers, throttledSave]);
 
     function answer(number: ID, answer: string | null) {
         if(answer === null) {
