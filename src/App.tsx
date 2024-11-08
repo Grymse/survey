@@ -4,12 +4,13 @@ import Survey from "./components/survey/Survey";
 import LoginModal from "./components/login/LoginModal";
 import ProgressBar from "./components/survey/ProgressBar";
 import Terms from "./components/Terms";
+import SurveyInFacebook from "./components/login/SurveyInFacebook";
 
 function App() {
   const isTerms = window.location.pathname.endsWith("/terms");
   return (
     <Providers>
-      {!isTerms && <LoginModal />}
+      {!isTerms && <><LoginModal /><SurveyInFacebook /></>}
       <div className="absolute bottom-4 right-4">
         <DarkmodeButton />
       </div>

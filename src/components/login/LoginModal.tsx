@@ -14,8 +14,8 @@ export default function LoginModal() {
         <p>
             You need to login to fill out this formular. This is to prevent spam. Your identity will be kept anonymous.
         </p>
-      <DialogFooter>
-        <Button onClick={db.signinWithGoogle}>Login with Google</Button>
+      <DialogFooter className="flex gap-4 justify-between w-full">
+        <Button onClick={db.signinWithGoogle}>Login with Google </Button>
         <Button onClick={db.signinWithFacebook}>Login with Facebook</Button>
     </DialogFooter>      
     </DialogContent>
