@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { FacebookAuthProvider, getAuth, signInWithPopup, signInWithRedirect } from "firebase/auth";
+import { FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 import {
@@ -30,7 +30,7 @@ function signinWithGoogle() {
 }
 
 function signinWithFacebook() {
-  return signInWithRedirect(auth, facebookProvider);
+  return signInWithPopup(auth, facebookProvider);
 }
 
 function signout() {
