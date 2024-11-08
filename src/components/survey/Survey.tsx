@@ -9,8 +9,6 @@ import MD from "./Markdown";
 import { toast } from "@/hooks/useToast";
 import Profile from "../login/Profile";
 import Crossfire from "react-canvas-confetti/dist/presets/crossfire";
-import Explosion from 'react-canvas-confetti/dist/presets/explosion';
-import Fireworks from 'react-canvas-confetti/dist/presets/fireworks';
 
 export default function Survey() {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
