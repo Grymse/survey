@@ -1,4 +1,4 @@
-
+import { toast } from '@/hooks/useToast';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 // import { Table, TableCell, TableHeader, TableRow } from '../ui/table';
@@ -37,11 +37,11 @@ export default function MD({ children, className }: Props) {
           
           code: (x) => { 
             function copyURL() {
-              /* navigator.clipboard.writeText('https://impulse-survey.vercel.app/');
+              navigator.clipboard.writeText('https://impulse-survey.vercel.app/');
               toast({
                 title: "URL copied",
                 description: "The URL has been copied to your clipboard",
-              }) */
+              })
             }
             
             return <pre className="bg-muted overflow-hidden p-4 rounded-lg">
