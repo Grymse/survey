@@ -14,7 +14,6 @@ export default function LoginModal() {
         <p>
             You need to login to fill out this formular. This is to prevent spam. Your identity will be kept anonymous.
         </p>
-        <a href="safari://impulse-survey.vercel.app/" target="_blank" rel="noopener noreferrer">Open in Browser</a>
       <DialogFooter>
         <Button onClick={db.signinWithGoogle}>Login with Google</Button>
     </DialogFooter>      
