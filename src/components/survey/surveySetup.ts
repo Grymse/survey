@@ -286,7 +286,7 @@ const aboutYou: Page = {
   {
     id: 4,
     title: "Current Occupation",
-    type: "SelectInput",
+    type: "RadioInput",
     options: [
       "Prefer not to say",
       "Unemployed",
@@ -305,7 +305,7 @@ const aboutYou: Page = {
     id: 5,
     title: "Industry?",
     subtitle: "If you're in education, and your education does not target a specific industry, select no industry",
-    type: "SelectInput",
+    type: "RadioInput",
     options: [
       "No industry",
       "Healthcare / Medical",
@@ -332,7 +332,7 @@ const impulsePurchases: Page = {
     {
       id: 6,
       title: "How often do you purchase products online on impulse?",
-      type: "SelectInput",
+      type: "RadioInput",
       options: [
         "Daily",
         "Multiple times a week",
