@@ -7,22 +7,20 @@ import { Elements } from "./Elements";
 import { useSurvey } from "./useSurvey";
 import MD from "./Markdown";
 import { toast } from "@/hooks/useToast";
-
-
+import Profile from "../login/Profile";
 
 export default function Survey() {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const {submit, validate} = useSurvey();
   const maxPage = survey.pages.length + 1;
   const questionsPerPage = survey.pages.map(p => p.elements.length);
+  const currentPage = survey.pages[currentPageIndex - 1];
 
   function getQuestionsOffset(index: number) {
     if(index < 2) return 1;
     if(index === 2) return questionsPerPage[0] + 1;
     return (questionsPerPage[0] + questionsPerPage[1]) / 2;
   }
-
-  const currentPage = survey.pages[currentPageIndex - 1];
 
   function scrollToTop() {
     document.querySelector('main')?.scrollTo({top: 0});
@@ -53,10 +51,13 @@ export default function Survey() {
     })
   }
 
-
   if(currentPageIndex == 0) {
     return <PageContainer page={currentPageIndex} maxPage={maxPage} title={survey.title ?? ""} subtitle={survey.subtitle} next={next} nextTitle="Start" >
       {survey.markdown && <MD>{survey.markdown}</MD>}
+      <div className="mt-8 mb-4 space-y-1">
+        <Profile />
+        <p className="text-muted-foreground text-sm">In case of problems, contact <a href="mailto:pronicoxd@gmail.com" className="underline" target="_blank">this email</a></p>
+      </div>
     </PageContainer>
   }
 

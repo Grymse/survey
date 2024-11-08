@@ -1,5 +1,9 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { Element } from './surveySetup';
+import { toast } from '@/hooks/useToast';
+import { db } from '@/services/FirebaseDB';
+import useAuth from '@/hooks/useAuth';
+import { User } from 'firebase/auth';
 
 type ID = number;
 
@@ -22,8 +26,20 @@ const initialState: State = {
 export const StateContext = createContext<State>(initialState);
 
 export const StateProvider = ({ children }: { children: ReactNode }) => {
+    const auth = useAuth();
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
+
     const [answers, setAnswers] = useState<Map<ID, string>>(new Map());
     const [errors, setErrors] = useState<Map<ID, string>>(new Map());
+
+    useEffect(() => {
+        if(auth?.uid === currentUser?.uid) return;
+
+        setCurrentUser(auth);
+        db.load().then((data) => {
+            console.log("Data loaded", data);
+        }).catch(() => {});
+    },[auth, currentUser]);
 
     function answer(number: ID, answer: string | null) {
         if(answer === null) {
@@ -41,13 +57,16 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
     }
 
     async function submit() {
-        
-        // TODO: Check answers validity
+        if (errors.size !== 0) {
+            toast({
+                title: "Fill out all required fields!",
+                description: "Check previous pages for errors",
+                duration: 3500,
+            })
+            return;
+        }
 
-        console.log(answers);
-
-        // TODO: Send to Google Servers
-        return Promise.resolve();
+        return db.save(answers);
     }
 
     function validate(elements: Element[]): Map<ID, string> {

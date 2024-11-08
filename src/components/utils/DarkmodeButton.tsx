@@ -1,5 +1,5 @@
-import { Button } from "../../ui/button";
-import { SimpleTooltip } from "../../ui/tooltip";
+import { Button } from "../ui/button";
+import { SimpleTooltip } from "../ui/tooltip";
 import { useDarkmode } from "@/hooks/useDarkmode";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 

@@ -5,83 +5,53 @@ import {
   collection,
   doc,
   getDoc,
-  getDocs,
+  setDoc,
   deleteDoc,
-  addDoc,
-  query,
-  where,
 } from "firebase/firestore";
-import {
-  DatabaseRecord,
-  DatabaseRecordWithoutData,
-  IDatabase,
-} from "./IDatabase";
 
-export class FirebaseDB implements IDatabase {
-  connect(): Promise<void> {
-    return Promise.resolve();
-  }
-
-  disconnect(): Promise<void> {
-    return Promise.resolve();
-  }
-
-  async save(name: string, data: string): Promise<DatabaseRecord> {
-    const gamesCollection = this.getGamesCollection();
-
-    const auth = getAuth();
-
-    const docRef = await addDoc(gamesCollection, {
-      name,
-      data,
-      createdAt: new Date(),
-      ownerId: auth.currentUser?.uid ?? null,
-      ownerName: auth.currentUser?.displayName ?? null,
+class FirebaseDB {
+  async save(responses: Map<number,string>): Promise<void> {
+    await setDoc(this.getResponsesRef(), {
+      responses: Object.fromEntries(responses),
     });
-
-    return this.load(docRef.id);
   }
 
-  private getGamesCollection() {
-    return collection(getFirestore(app), "stock-markets");
-  }
-
-  async load(id: string): Promise<DatabaseRecord> {
-    const gamesCollection = this.getGamesCollection();
-    const docSnapshot = await getDoc(doc(gamesCollection, id));
-
-    if (!docSnapshot.exists()) {
-      throw new Error("Game not found");
-    }
-
-    return { ...docSnapshot.data(), id: docSnapshot.id } as DatabaseRecord;
-  }
-
-  async list(): Promise<DatabaseRecordWithoutData[]> {
-    const auth = getAuth();
+  private getResponsesRef() {
+    const responsesCollection = collection(getFirestore(app), "responses");
+    
+    const auth = getAuth(app);
     if (!auth.currentUser) {
       throw new Error("User not logged in");
     }
 
-    const gamesCollection = this.getGamesCollection();
-    const q = query(
-      gamesCollection,
-      where("ownerId", "==", auth.currentUser.uid)
-    );
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        ...data,
-        id: doc.id,
-        createdAt: new Date(data.createdAt.seconds * 1000),
-      } as DatabaseRecordWithoutData;
-    });
+    const userId = auth.currentUser.uid;
+    return doc(responsesCollection, userId);
   }
 
-  async delete(id: string): Promise<void> {
-    const gamesCollection = this.getGamesCollection();
-    const gameDoc = doc(gamesCollection, id);
-    return deleteDoc(gameDoc);
+  async load(): Promise<Map<number,string>> {
+    const docSnapshot = await getDoc(this.getResponsesRef());
+
+    if (!docSnapshot.exists()) {
+      throw new Error("Responses not found");
+    }
+
+    const map = new Map(docSnapshot.data()?.responses);
+
+    // Run through all entries in the map. In case the key is not a number, delete it.
+    for (const [key, value] of map.entries()) {
+      console.log(key, value);
+      if (typeof key !== "number" || typeof value !== "string") {
+        map.delete(key);
+      }
+    }
+
+    return map as Map<number,string>;
+  }
+
+  async delete(): Promise<void> {
+    return deleteDoc(this.getResponsesRef());
   }
 }
+
+const db = new FirebaseDB();
+export { db };
