@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 import {
@@ -22,10 +22,15 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 function signinWithGoogle() {
-  return signInWithPopup(auth, provider);
+  return signInWithPopup(auth, googleProvider);
+}
+
+function signinWithFacebook() {
+  return signInWithPopup(auth, facebookProvider);
 }
 
 function signout() {
@@ -74,4 +79,4 @@ async function remove(): Promise<void> {
   return deleteDoc(getResponsesRef());
 }
 
-export default { save, load, remove, signinWithGoogle, signout };
+export default { save, load, remove, signinWithGoogle, signinWithFacebook, signout };

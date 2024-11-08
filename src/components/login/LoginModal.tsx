@@ -16,6 +16,7 @@ export default function LoginModal() {
         </p>
       <DialogFooter>
         <Button onClick={db.signinWithGoogle}>Login with Google</Button>
+        <Button onClick={db.signinWithFacebook}>Login with Facebook</Button>
     </DialogFooter>      
     </DialogContent>
   </Dialog>
