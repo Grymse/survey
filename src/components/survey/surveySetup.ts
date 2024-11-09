@@ -129,7 +129,7 @@ example: "As you are scrolling through different products, or when you enter che
 },
 {
   short: "Reflect Shopping Time",
-  strategy: "Reflect on time spent on onlineshopping",
+  strategy: "Reflect on time spent on online shopping",
 example: "When exiting a session of looking at/purchasing on online webshops and apps, you reflect on how much of your time it consumes."
 },
 {
