@@ -63,8 +63,8 @@ function RadioInput(element: RadioInputType) {
   return <RadioGroup name={element.title} value={currentAnswer} onValueChange={(value) => answer(element.id, value)}>
     {element.options?.map(option => 
       <div key={option} className={`flex rounded-sm items-center space-x-2 space-y-1`}>
-        <RadioGroupItem value={option} id={option} />
-        <Label htmlFor={option}>{option}</Label>
+        <RadioGroupItem value={option} id={element.id + option} />
+        <Label htmlFor={element.id + option}>{option}</Label>
       </div>
     )}
   </RadioGroup>
@@ -93,12 +93,12 @@ function SelectInput(element: SelectInputType) {
       {element.options?.map((option) => (
         <div key={option} className="flex items-center space-x-2 space-y-1">
           <Checkbox
-            name={option}
-            id={option} 
+            name={element.id + option}
+            id={element.id + option} 
             checked={currentAnswer?.includes(option) ?? false}
             onCheckedChange={e => onInputChange(option, e)}
           />
-          <Label htmlFor={option}>{option}</Label>
+          <Label htmlFor={element.id + option}>{option}</Label>
         </div>
       ))}
     </div>

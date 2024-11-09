@@ -14,6 +14,7 @@ export default function LoginModal() {
         <p>
             To participate in the study, you need to login. This is to prevent spam. Your identity will be kept anonymous.
         </p>
+        <p className="text-muted-foreground text-sm">By continuing, you are accepting our <a className="underline" href={new URL(window.location.href).origin + "/#/terms"} target="_self">Terms & Conditions</a></p>
       <DialogFooter className="flex gap-4 justify-between w-full">
         <Button onClick={db.signinWithGoogle}>Login with Google </Button>
         {/* <Button onClick={db.signinWithFacebook}>Login with Facebook</Button> */}

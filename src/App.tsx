@@ -5,9 +5,17 @@ import LoginModal from "./components/login/LoginModal";
 import ProgressBar from "./components/survey/ProgressBar";
 import Terms from "./components/Terms";
 import SurveyInFacebook from "./components/login/SurveyInFacebook";
+import { useEffect, useState } from "react";
 
 function App() {
-  const isTerms = window.location.pathname.endsWith("/#/terms");
+  const [isTerms, setTerms] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+    setTerms(window.location.pathname.endsWith("/#/terms"));
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <Providers>
       {!isTerms && <><LoginModal /><SurveyInFacebook /></>}
