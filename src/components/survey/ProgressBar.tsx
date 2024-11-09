@@ -14,7 +14,7 @@ export default function ProgressBar() {
   }, [answers]);
 
   return <div className="pointer-events-none absolute w-[100dvw] h-[100dvh] overflow-hidden">
-    <div className="bg-primary absolute w-[100dvw] h-1 opacity-0 sm:opacity-100" style={{transform: `translateX(${progress-100}%)`}}  />
+    <div className="bg-primary absolute w-[100dvw] h-1.5 bottom-0 opacity-0 sm:opacity-100" style={{transform: `translateX(${progress-100}%)`}}  />
     <div className="bg-primary absolute w-1 h-[100dvh] opacity-100 sm:opacity-0" style={{transform: `translateY(${progress-100}%)`}} />
   </div>
 }
