@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { debugErrorMap, FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 import {
@@ -31,6 +31,24 @@ function signinWithGoogle() {
 
 function signinWithFacebook() {
   return signInWithPopup(auth, facebookProvider);
+}
+
+
+// @ts-expect-error TypeScript thinks it's a string, but it's a function
+const errorMap = debugErrorMap();
+
+async function removeUser() {
+  try {
+    return await auth.currentUser?.delete();
+  } catch (e: unknown) {
+
+    if (!(e instanceof Error)) {
+      throw e;
+    }
+    const authErrorCode = e.message.split('(auth/')[1]?.split(')')[0];
+    throw new Error(errorMap[authErrorCode] ?? authErrorCode);
+  }
+  return;
 }
 
 function signout() {
@@ -79,4 +97,4 @@ async function remove(): Promise<void> {
   return deleteDoc(getResponsesRef());
 }
 
-export default { save, load, remove, signinWithGoogle, signinWithFacebook, signout };
+export default { save, load, remove, removeUser, signinWithGoogle, signinWithFacebook, signout };

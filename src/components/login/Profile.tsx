@@ -14,7 +14,7 @@ export default function Profile() {
     });
 
     db.remove().then(() => {
-      user?.delete().then(()=> {
+      db.removeUser().then(()=> {
         toast({
           title: "Data successfully deleted",
           description: "Have a great day!",
