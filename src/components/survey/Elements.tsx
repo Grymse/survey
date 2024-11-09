@@ -64,7 +64,7 @@ function RadioInput(element: RadioInputType) {
     {element.options?.map(option => 
       <div key={option} className={`flex rounded-sm items-center space-x-2 space-y-1`}>
         <RadioGroupItem value={option} id={element.id + option} />
-        <Label htmlFor={element.id + option}>{option}</Label>
+        <Label className="cursor-pointer" htmlFor={element.id + option}>{option}</Label>
       </div>
     )}
   </RadioGroup>
@@ -98,7 +98,7 @@ function SelectInput(element: SelectInputType) {
             checked={currentAnswer?.includes(option) ?? false}
             onCheckedChange={e => onInputChange(option, e)}
           />
-          <Label htmlFor={element.id + option}>{option}</Label>
+          <Label className="cursor-pointer" htmlFor={element.id + option}>{option}</Label>
         </div>
       ))}
     </div>

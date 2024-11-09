@@ -12,10 +12,11 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-    setTerms(window.location.pathname.endsWith("/#/terms"));
+      setTerms(window.location.href.includes('/#/terms'));
     }, 100);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <Providers>
       {!isTerms && <><LoginModal /><SurveyInFacebook /></>}
