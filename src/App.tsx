@@ -7,7 +7,7 @@ import Terms from "./components/Terms";
 import SurveyInFacebook from "./components/login/SurveyInFacebook";
 
 function App() {
-  const isTerms = window.location.pathname.endsWith("/terms");
+  const isTerms = window.location.pathname.endsWith("/#/terms");
   return (
     <Providers>
       {!isTerms && <><LoginModal /><SurveyInFacebook /></>}

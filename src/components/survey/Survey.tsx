@@ -59,7 +59,7 @@ export default function Survey() {
       <div className="mt-8 mb-6 space-y-1">
         <Profile />
       </div>
-        <p className="text-muted-foreground text-sm">By continuing, you are accepting our <a className="underline" href={new URL(window.location.href).origin + "/terms"} target="_self">Terms & Conditions</a></p>
+        <p className="text-muted-foreground text-sm">By continuing, you are accepting our <a className="underline" href={new URL(window.location.href).origin + "/#/terms"} target="_self">Terms & Conditions</a></p>
         <p className="text-muted-foreground text-sm">In case of problems, contact <a href="mailto:pronicoxd@gmail.com" className="underline" target="_blank">this email</a></p>
     </PageContainer>
   }
