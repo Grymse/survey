@@ -12,7 +12,7 @@ export default function LoginModal() {
         <DialogTitle>Login to continue</DialogTitle>
       </DialogHeader>
         <p>
-            You need to login to fill out this formular. This is to prevent spam. Your identity will be kept anonymous.
+            To participate in the study, you need to login. This is to prevent spam. Your identity will be kept anonymous.
         </p>
       <DialogFooter className="flex gap-4 justify-between w-full">
         <Button onClick={db.signinWithGoogle}>Login with Google </Button>
