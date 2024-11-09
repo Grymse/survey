@@ -233,8 +233,8 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 const strategiesPage: Page = {
-  title: "About you",
-  subtitle: "To help us understand more about your shopping habits, we’d like to start with a few brief questions about you. This will include general demographic information, allowing us to analyze trends and patterns in online shopping behaviors across different groups. Your responses are anonymous and will be used solely to improve our research on impulse purchasing habits.",
+  title: "Anti-Impulse Purchasing Strategies",
+  subtitle: "In this section, we will explore 21 strategies aimed at reducing impulse purchases. Your feedback will aid in identifying effective methods to promote mindful shopping and support the decrease of impulse online purchasing habits.",
   elements: shuffleArray(strategies.map((strategy, i) => createStrategyCompound(i, strategy))).map((e,i) => {
 
     //@ts-expect-error Inject Strategy number
@@ -244,8 +244,8 @@ const strategiesPage: Page = {
 }
 
 const aboutYou: Page = {
-  title: "About you",
-  subtitle: "To help us understand more about your shopping habits, we’d like to start with a few brief questions about you. This will include general demographic information, allowing us to analyze trends and patterns in online shopping behaviors across different groups. Your responses are anonymous and will be used solely to improve our research on impulse purchasing habits.",
+  title: "About You",
+  subtitle: "This section includes general demographic information, allowing us to analyze trends and patterns in online shopping behaviors across different groups. Your responses are anonymous and will be used solely to improve our research on online impulse purchasing habits.",
   elements: [
   {
     id: 1,
@@ -325,10 +325,26 @@ const aboutYou: Page = {
   }],
 };
 
+const aboudImpulsePurchases = `
+Impulse buying is unreflective, with little evaluation or consideration of consequences. Attention is on immediate gratification rather than solving a need, making impulsive purchases quick and often unplanned. Impulse buying occurs when a consumer experiences a sudden, often powerful and persistent urge to buy something immediately. The impulse to buy is hedonically complex and may stimulate emotional conflict.
+
+**Examples of online impulse purchases:**
+- You're scrolling through social media and see an ad for a cozy blanket on sale. Without planning, you click and buy it within minutes.
+- While playing a mobile game, a limited-time pack of in-game currency pops up, promising extra bonuses if purchased immediately. You tap "buy" to get it.
+- You receive an email about a 50% discount on noise-cancelling headphones from your favorite tech store. Excited, you click and purchase directly from the link.
+- On a popular e-commerce site, a bundle of skincare products is recommended during checkout at a discount. You add it to your order impulsively.
+- You're browsing a clothing website out of boredom and see a dress you like. Without thinking you add it to your cart and complete the purchase.
+`
+
 const impulsePurchases: Page = {
-  title: "About you",
-  subtitle: "To help us understand more about your shopping habits, we’d like to start with a few brief questions about you. This will include general demographic information, allowing us to analyze trends and patterns in online shopping behaviors across different groups. Your responses are anonymous and will be used solely to improve our research on impulse purchasing habits.",
+  title: "Online Impulse Purchases",
+  subtitle: "This section will explore your habits and attitudes toward online impulse purchasing.",
   elements: [
+    {
+      type: "Text",
+      title: "Online Impulse Purchases",
+      subtitle: aboudImpulsePurchases,
+    },
     {
       id: 6,
       title: "How often do you purchase products online on impulse?",
@@ -343,6 +359,24 @@ const impulsePurchases: Page = {
         "Rarely / Never"
       ],
       required: true
+    },
+    {
+      id: 10,
+      title: "What categories of products are you likely to purchase on impulse online?",
+      subtitle: "You can choose multiple options. If you do not purchase impulsively online, leave this unanswered.",
+      type: "SelectInput",
+      options: [
+        "Electronics and Gadgets",
+        "Clothing and Accessories",
+        "Health and Beauty Products",
+        "Home and Garden",
+        "Food and Beverages",
+        "Toys and Games",
+        "Books and Media",
+        "Sports and Fitness Equipment",
+        "Travel and Experiences"
+      ],
+      shuffle: false,
     },
     {
       id: 7,
@@ -382,24 +416,6 @@ const impulsePurchases: Page = {
         "Strongly disagree"
       ],
       required: true
-    },
-    {
-      id: 10,
-      title: "What categories of products are you likely to purchase on impulse online?",
-      subtitle: "You can choose multiple options. If you do not purchase impulsively online, leave this unanswered.",
-      type: "SelectInput",
-      options: [
-        "Electronics and Gadgets",
-        "Clothing and Accessories",
-        "Health and Beauty Products",
-        "Home and Garden",
-        "Food and Beverages",
-        "Toys and Games",
-        "Books and Media",
-        "Sports and Fitness Equipment",
-        "Travel and Experiences"
-      ],
-      shuffle: false,
     },
     {
       id: 11,

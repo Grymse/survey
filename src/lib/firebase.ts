@@ -33,7 +33,6 @@ function signinWithFacebook() {
   return signInWithPopup(auth, facebookProvider);
 }
 
-
 // @ts-expect-error TypeScript thinks it's a string, but it's a function
 const errorMap = debugErrorMap();
 
