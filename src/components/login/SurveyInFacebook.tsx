@@ -14,7 +14,8 @@ const markdown = `
 
 export default function SurveyInFacebook() {
   const userAgent = navigator.userAgent || navigator.vendor
-  const isFacebook = /FBAN|FBAV|Instagram/.test(userAgent);
+  const isFacebook = /FBAN|FBAV/.test(userAgent);
+  const isInstagram = /Instagram/.test(userAgent);
 
   function copyURL() {
     navigator.clipboard.writeText('https://impulse-survey.vercel.app/');
@@ -25,11 +26,11 @@ export default function SurveyInFacebook() {
   }
 
   return <>
-    <Dialog open={isFacebook}>
+    <Dialog open={isFacebook || isInstagram}>
     <DialogContent className="sm:max-w-[425px]" showCloseButton={false}>
 
       <DialogHeader>
-        <DialogTitle>Go to your internet browser (Safari/Chrome)</DialogTitle>
+        <DialogTitle>Exit {isFacebook ? "Facebook" : "Instagram"} and go to Safari or Chrome</DialogTitle>
         <DialogDescription className="text-muted-foreground">Facebook does not allow us to login, when using their app. Please go to your internet browser and login there.
         </DialogDescription>
       </DialogHeader>
