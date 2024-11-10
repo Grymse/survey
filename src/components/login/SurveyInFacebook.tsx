@@ -28,7 +28,6 @@ export default function SurveyInFacebook() {
   return <>
     <Dialog open={isFacebook || isInstagram}>
     <DialogContent className="sm:max-w-[425px]" showCloseButton={false}>
-
       <DialogHeader>
         <DialogTitle>Exit {isFacebook ? "Facebook" : "Instagram"} and go to Safari or Chrome</DialogTitle>
         <DialogDescription className="text-muted-foreground">Facebook does not allow us to login, when using their app. Please go to your internet browser and login there.
