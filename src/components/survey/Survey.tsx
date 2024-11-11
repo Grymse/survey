@@ -7,7 +7,6 @@ import { Elements } from "./Elements";
 import { useSurvey } from "./useSurvey";
 import MD from "./Markdown";
 import { toast } from "@/hooks/useToast";
-import Profile from "../login/Profile";
 import Crossfire from "react-canvas-confetti/dist/presets/crossfire";
 
 export default function Survey() {
@@ -56,11 +55,8 @@ export default function Survey() {
   if(currentPageIndex == 0) {
     return <PageContainer page={currentPageIndex} maxPage={maxPage} title={survey.title ?? ""} subtitle={survey.subtitle} next={next} nextTitle="Start" >
       {survey.markdown && <MD>{survey.markdown}</MD>}
-      <div className="mt-8 mb-6 space-y-1">
-        <Profile />
-      </div>
-        <p className="text-muted-foreground text-sm">By continuing, you are accepting our <a className="underline" href={new URL(window.location.href).origin + "/#/terms"} target="_self">Terms & Conditions</a></p>
-        <p className="text-muted-foreground text-sm">In case of problems, contact <a href="mailto:pronicoxd@gmail.com" className="underline" target="_blank">this email</a></p>
+      <p className="text-muted-foreground text-sm">By continuing, you are accepting our <a className="underline" href={new URL(window.location.href).origin + "/#/terms"} target="_self">Terms & Conditions</a></p>
+      <p className="text-muted-foreground text-sm">In case of problems, contact <a href="mailto:pronicoxd@gmail.com" className="underline" target="_blank">this email</a></p>
     </PageContainer>
   }
 
