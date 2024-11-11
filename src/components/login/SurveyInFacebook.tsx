@@ -15,7 +15,7 @@ const markdown = `
 export default function SurveyInFacebook() {
   const userAgent = navigator.userAgent || navigator.vendor
   const isFacebook = /FBAN|FBAV/.test(userAgent);
-  const isMessenger = /FB_IAB/.test(userAgent);
+  /* const isMessenger = /FB_IAB/.test(userAgent); */
   const isInstagram = /Instagram/.test(userAgent);
 
   function copyURL() {
@@ -37,7 +37,7 @@ export default function SurveyInFacebook() {
       <MD>
       {markdown}
       </MD>
-      {isMessenger ? 1 : 0}
+      <p className="text-xs text-muted-foreground">{userAgent}</p>
       <DialogFooter className="flex gap-4 justify-between w-full">
       <Button onClick={copyURL}>Copy URL</Button>
     </DialogFooter>      
