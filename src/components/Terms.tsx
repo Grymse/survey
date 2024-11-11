@@ -25,7 +25,7 @@ All collected data will be stored securely using Google's Firestore database ser
 While reasonable efforts are made to protect your data, Nicolai Grymer and IT-University of Copenhagen are not liable for any unauthorized access or unforeseen breaches of data that may occur despite best practices.
 
 ### Right to Withdraw and Data Removal
-Participants who regret their survey responses after submission may request to withdraw their data from the study. To ensure anonymity and the integrity of the research, data removal requests must be made within 30 days of survey completion. After this period, data may be aggregated and anonymized, making it impossible to identify or remove specific entries. If you wish to request data removal, login using the account you submitted the data, and click on *Delete all data* on the first page. If you have questions about this process, please contact the emails listed below promptly.
+Participants who regret their survey responses after submission may request to withdraw their data from the study. To ensure anonymity and the integrity of the research, data removal requests must be made within 30 days of survey completion. After this period, data may be aggregated and anonymized, making it impossible to identify or remove specific entries. If you wish to request data removal, please contact the emails listed below promptly.
 
 ### Contact Information
 For questions or concerns regarding this survey, your participation, or the data collected, please contact Nicolai Grymer at pronicoxd@gmail.com or ngry@itu.dk
