@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { Element } from './surveySetup';
 import { toast } from '@/hooks/useToast';
 import db from '@/lib/firebase';
@@ -23,6 +23,7 @@ const initialState: State = {
 
 export const StateContext = createContext<State>(initialState);
 
+
 export const StateProvider = ({ children }: { children: ReactNode }) => {
     const [answers, setAnswers] = useState<Map<ID, string>>(new Map());
     const [errors, setErrors] = useState<Map<ID, string>>(new Map());
@@ -40,7 +41,15 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
         }
         
         setAnswers(new Map(answers.set(number, answer)));
+        localStorage.setItem("answers", JSON.stringify(Array.from(answers.entries())));
     }
+
+    useEffect(() => {
+        const storedAnswers = localStorage.getItem("answers");
+        if(storedAnswers) {
+            setAnswers(new Map(JSON.parse(storedAnswers)));
+        }
+    }, []);
 
     async function submit() {
         if (errors.size !== 0) {
@@ -52,6 +61,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
             return;
         }
 
+        localStorage.clear();
         return db.save(answers);
     }
 
