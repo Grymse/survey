@@ -37,7 +37,7 @@ export default function SurveyInFacebook() {
       <MD>
       {markdown}
       </MD>
-      <p className="text-xs text-muted-foreground">{userAgent}</p>
+      <p style={{fontSize: "0.3rem"}} className="text-xs text-muted-foreground">{userAgent}</p>
       <DialogFooter className="flex gap-4 justify-between w-full">
       <Button onClick={copyURL}>Copy URL</Button>
     </DialogFooter>      
