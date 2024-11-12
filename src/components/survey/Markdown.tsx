@@ -39,8 +39,8 @@ export default function MD({ children, className }: Props) {
             function copyURL() {
               navigator.clipboard.writeText('https://impulse-survey.vercel.app/');
               toast({
-                title: "URL copied",
-                description: "The URL has been copied to your clipboard",
+                title: "Copied Content",
+                description: "The content has been copied to your clipboard",
               })
             }
             

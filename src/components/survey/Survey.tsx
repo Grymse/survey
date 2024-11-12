@@ -62,7 +62,7 @@ export default function Survey() {
 
   if(currentPageIndex === maxPage) {
     return <PageContainer page={currentPageIndex} maxPage={maxPage} title="Thanks for participating" subtitle="We have received your answers, and you can now safely close the window!">
-      <p>If you wish to help more, please share the survey with friends and family!</p>
+      <MD>{endPageMD}</MD>
       <Crossfire autorun={{ speed: 5, duration: 2500 }} />
     </PageContainer>
   }
@@ -71,6 +71,16 @@ export default function Survey() {
     <Elements elements={currentPage.elements} indexOffset={getQuestionsOffset(currentPageIndex)} />
   </PageContainer>
 }
+
+const endPageMD = `
+*If you wish to help more, please share the survey with friends and family!*
+
+The following code gives you credits that can be used to get free research participants at SurveySwap.io. 
+ 
+ Go to: https://surveyswap.io/sr/BGYN-H57O-RPFX 
+  
+ Or, alternatively, enter the code manually: \`BGYN-H57O-RPFX\`
+`;
 
 type PageContainerProps = PropsWithChildren<{
   title: string;

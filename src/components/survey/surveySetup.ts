@@ -104,7 +104,6 @@ function createStrategyCompound(index: number, strategy: StrategyType) : Element
   };
 }
 
-//const compound: Element = createStrategyCompound(0, "Ask yourself if this is a quality product with long lifespan/repairability", "Before purchasing the product, you estimate the quality of the product, the lifespan of the product and to which degree you can repair the product in case it breaks. You may also ask yourself whether you would like to use this product excessively, if you had the chance. With this new information, you contemplate whether you still interested in buying this particular product.")
 
 type StrategyType = {
   strategy: string;
