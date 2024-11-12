@@ -456,6 +456,8 @@ The survey is split three ways
 - Concrete strategies to combat impulse purchases online
 
 Thank you for dedicating time to complete this survey! It helps us a lot!
+
+*P.S: This survey contains credits to get free survey responses at SurveySwap.io*
   `,
   pages: [aboutYou, impulsePurchases, strategiesPage],
 }
