@@ -6,19 +6,6 @@ type Meta = {
     required?: boolean,
 }
 
-type Meta = {
-  title: string;
-  subtitle?: string;
-  required?: boolean,
-  options?: string[];
-  shuffle?: boolean,
-
-  // Strategier ID<=20
-  strategy: string;
-  example: string;
-  shortStrategy: string;
-}
-
 type Input = {
     id: number,
 }

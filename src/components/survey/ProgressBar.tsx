@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { questions } from "./surveySetup";
 import { useSurvey } from "./useSurvey";
 
-// @ts-expect-error I know that the id will be defined, but TypeScript doesn't
 const requiredQuestions = new Set(questions.filter(q => q?.required).map(q => q?.id ?? 0));
 
 export default function ProgressBar() {
