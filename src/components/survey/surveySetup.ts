@@ -6,6 +6,19 @@ type Meta = {
     required?: boolean,
 }
 
+type Meta = {
+  title: string;
+  subtitle?: string;
+  required?: boolean,
+  options?: string[];
+  shuffle?: boolean,
+
+  // Strategier ID<=20
+  strategy: string;
+  example: string;
+  shortStrategy: string;
+}
+
 type Input = {
     id: number,
 }
@@ -111,7 +124,7 @@ type StrategyType = {
   short: string;
 }
 
-const strategies: StrategyType[] = [{
+export const strategies: StrategyType[] = [{
   short: "Need This?",
   strategy: "Before completing a purchase, ask yourself \"Do I really need this\"?",
 example: "You are ready to checkout and pay for the product, and in this moment you stop up and detach yourself from the feeling of excitement over completing the purchase - Here you question yourself \"Do I really need this?\""
@@ -462,8 +475,12 @@ Thank you for dedicating time to complete this survey! It helps us a lot!
   pages: [aboutYou, impulsePurchases, strategiesPage],
 }
 
-export const questions = survey.pages.flatMap(p => p.elements).flatMap(e => e.type === "Compound" ? e.elements : e).filter(e => e?.type && e.type.endsWith("Input"));
-
-
-
-
+export const questions = survey.pages.flatMap(p => p.elements)
+                                      .flatMap(e => e.type === "Compound" ? e.elements : e)
+                                      .filter(e => e !== undefined)
+                                      .filter(e => e.type === "RadioInput" || e.type ==
+                                        "DropDownInput" || e.type ==
+                                        "SelectInput" || e.type ==
+                                        "TextInput" || e.type ==
+                                        "TextFieldInput" || e.type ==
+                                        "RangeInput");

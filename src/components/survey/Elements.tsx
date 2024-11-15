@@ -26,7 +26,7 @@ function Element({element, index}: {element: ElementType, index: number}) {
   const {errors, answers} = useSurvey();
   if(element.type === "Text") return <div className="space-y-2">
       <p className="text-lg">{element.title}</p> 
-      {element.subtitle && <MD className="text-muted-foreground font-light">{element.subtitle}</MD>}
+      {element.subtitle && <MD className="text-muted-foreground font-light leading-7">{element.subtitle}</MD>}
   </div>
 
   if(element.type === "Compound") return element.elements && <div className="pt-4"><Elements elements={element.elements} indent indexOffset={index*2} /></div>;
