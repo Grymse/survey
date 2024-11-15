@@ -2,6 +2,7 @@ import { questions } from './src/components/survey/surveySetup';
 
 import admin from 'firebase-admin';
 import serviceAccount from "./cert.json";
+import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -19,8 +20,10 @@ async function getAll() {
     const noMinors = validResponses.filter(r => r["1"] !== "Under 18");
     
     console.log("ALL:",responses.length, "FULL:", validResponses.length, "<=18:", noMinors.length);
+    const json = JSON.stringify(responses);
+    const path = __filename.split('/').slice(0, -1).join('/');
+    const filename = `${path}/responses/responses-${new Date().toISOString()}.json`;
+    writeFileSync(filename, json, { flag: 'w' });
 } 
-
-
 
 getAll();
